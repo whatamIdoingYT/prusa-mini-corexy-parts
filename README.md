@@ -37,7 +37,7 @@ The way the reinforcements work:
 
 You can simply print the upper and lower part and one diff plate. The 'DiffPlate' will be layed between the upper and lower part an can be adjusted in thickness by scaling it up and down. You will want to print it in a few thicknesses to check out how thick the plate needs to be for your printer. It may vary a little bit to mine, but mine was 1.4 mm thick. By adjusting the thickness you can get the optimal support in strength for your frame. 
 
-My recommended setup for you - get yourself these parts:
+## **My recommended setup for you** - get yourself these parts:
 
 - 1x 3030 extrusion 300 mm (bottom front horizontal)
 - 3x 3030 extrusion 240 mm (bottom sides horizontal and one upper back horizontal)
@@ -55,6 +55,113 @@ You will also need to drill a 5mm hole and cut a m6 thread with a tap in the Lon
 All the other parts (screws, pulleys, motors, rods, fans...) are being reused from your Prusa Mini / Mini +, so disassemble it carefully. Read trhough the project on Printables carefully. Maybe a few times. Look at all the parts in the project. I can recommend to print a lot of the 'ALU 90' ninety degree connector parts to connect every 3030 extrusion from every side you can with the other 3030 extrusions, to make the frame really rigid. It will be! You can use the 'ALU nut M3' for it as well, to secure them on the 3030 extrusions. They work fine. Make sure to maybe scale them a little bit smaller, because they can be quite hard to be inserted into the extrusions otherwise - just print one in 100 percent scale and check, if adjustments are needed for you.
 
 Feel free to ask questions. I will try to answer them - either here, or on Printables. On Printables you will probably get more support, because it's the projects origin :)
+
+## My Personal Machine G-Code for OrcaSlicer
+
+> **Important Note:** This configuration is specifically tuned for a setup with a **Bondtech bowden extruder** and a **titanium heatbreak**. If you are running a stock setup, please make sure to adjust or remove the custom E-steps (`M92`) and PID tuning values (`M301`) in the Start G-Code!
+
+**Start G-Code:**
+
+```gcode
+M862.3 P "MINI" ; printer model check
+M862.5 P2 ; g-code level check
+M862.6 P"Input shaper" ; FW feature check
+M115 U6.2.2+8853
+G90 ; use absolute coordinates
+M83 ; extruder relative mode
+M104 S170 ; set extruder temp for bed leveling
+M140 S[first_layer_bed_temperature] ; set bed temp
+M109 R170 ; wait for bed leveling temp
+M190 S[first_layer_bed_temperature] ; wait for bed temp
+G28 ; home all without mesh bed level
+M569 S0 X Y Z; reset to spreadCycle on all axis
+G29 ; mesh bed leveling 
+M104 S[first_layer_temperature] ; set extruder temp
+G92 E0
+
+G1 X0 Y-2 Z3 F2400
+
+M109 S[first_layer_temperature] ; wait for extruder temp
+
+M92 E415 ; custom E-steps for Bondtech extruder
+M301 P13.54 I0.98 D46.58 ; custom PID for titanium heatbreak
+
+; intro line
+G1 X10 Z0.2 F1000
+G1 X70 E8 F900
+G1 X140 E10 F700
+G92 E0
+
+M572 W0.06 ; set smooth time
+```
+
+**End G-Code:**
+
+```gcode
+{if layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+2, max_print_height)} F720 ; Move print head up{endif}
+G1 X170 Y170 F4200 ; park print head
+{if layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+50, max_print_height)} F720 ; Move print head further up{endif}
+G4 ; wait
+M104 S0 ; turn off temperature
+M140 S0 ; turn off heatbed
+M107 ; turn off fan
+M84 ; disable motors
+; max_layer_z = [max_layer_z]
+```
+
+**G-Code before layer change:**
+
+```gcode
+;BEFORE_LAYER_CHANGE
+G92 E0.0
+```
+
+**G-Code after layer change:**
+
+```gcode
+;AFTER_LAYER_CHANGE
+;[layer_z]
+{if ! spiral_mode}M74 W[extruded_weight_total]{endif}
+```
+
+**Filament change G-Code:**
+
+```gcode
+M600
+```
+
+** Pause G-Code:**
+
+```gcode
+M601
+```
+
+## **Motion settings:**
+
+**Velocity limits:**
+
+Max velocity X:        300
+Max velocity Y:        300
+Max velocity Z:        12
+Max velocity E:        100
+
+**Acceleration limits:**
+
+Max acceleration X:    10000
+Max acceleration Y:    10000
+Max acceleration Z:    600
+Max acceleration E:    3000
+Max accel. extruding:  10000
+Max accel. retract:    30000
+Max accel. travel:     10000
+
+**Jerk limits:**
+
+Max jerk X:            10
+Max jerk Y:            10
+Max jerk Z:            1
+Max jerk E:            2,5
+
 
 ## **Disclaimer and Limitation of Liability**
 

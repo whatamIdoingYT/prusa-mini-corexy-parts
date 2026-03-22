@@ -69,10 +69,13 @@ Just download it, mess around with it and tweak it for your personal preferences
 I've set my input shaping values as the following for the Mini CoreXY, based on my testing,**but the Values may vary for you:**
 
 **Filter:**
+
 **MVZ** on **both axes**
 
 **Frequencies:**
+
 **37** on the **X - axis**
+
 **40** on the **Y - axis**
 
 ## **Disclaimer and Limitation of Liability**

@@ -55,3 +55,35 @@ You will also need to drill a 5mm hole and cut a m6 thread with a tap in the Lon
 All the other parts (screws, pulleys, motors, rods, fans...) are being reused from your Prusa Mini / Mini +, so disassemble it carefully. Read trhough the project on Printables carefully. Maybe a few times. Look at all the parts in the project. I can recommend to print a lot of the 'ALU 90' ninety degree connector parts to connect every 3030 extrusion from every side you can with the other 3030 extrusions, to make the frame really rigid. It will be! You can use the 'ALU nut M3' for it as well, to secure them on the 3030 extrusions. They work fine. Make sure to maybe scale them a little bit smaller, because they can be quite hard to be inserted into the extrusions otherwise - just print one in 100 percent scale and check, if adjustments are needed for you.
 
 Feel free to ask questions. I will try to answer them - either here, or on Printables. On Printables you will probably get more support, because it's the projects origin :)
+
+## **Disclaimer and Limitation of Liability**
+
+**Please read this disclaimer carefully before using, modifying, or building upon this open-source project.**
+
+By accessing, downloading, or using the files, instructions, and information provided in this project, you agree to the following terms:
+
+* **Assumption of Risk ("Do It At Your Own Risk"):** Building, modifying, and operating 3D printers involves **inherent risks**. You will be working with **high-voltage electricity**, **high temperatures** (hotends, heated beds), and **moving mechanical parts**. You acknowledge that you are undertaking this project **entirely at your own risk**. It is your responsibility to ensure you have the necessary skills, knowledge, and safety precautions in place before starting.
+
+* **"As Is" Content / No Warranty:** All files, code, models, and documentation are provided **"AS IS"**, without warranty of any kind, express or implied. The creator makes **no guarantees** regarding the safety, reliability, accuracy, or suitability of this project for any specific purpose.
+
+* **Limitation of Liability:** Under **no circumstances** shall the creator(s), contributors, or maintainers of this project be held liable for any direct, indirect, incidental, special, or consequential damages. This includes, but is **not limited to**:
+    * **Personal injury or death**
+    * **Property damage** (including **fire** caused by thermal runaway or electrical faults)
+    * **Damage to your 3D printer** or other equipment
+    * **Loss of time, materials, or profits**
+    arising out of the use, inability to use, or modifications made to this project.
+
+* **Safety Warning:** Always follow basic electrical and fire safety guidelines. **Never leave a modified or DIY 3D printer running unattended** unless you have thoroughly tested all safety features (such as thermal runaway protection, proper grounding, and appropriate wire gauges). You are **solely responsible** for ensuring your build complies with local safety regulations and standards.
+
+**By using this project, you accept full responsibility for your actions and any outcomes that may result.**
+
+## Acknowledgements / Credits
+
+This project is a remix of / based on:
+* **"Prusa MINI coreXY"** by SE. 
+    * Source: (https://www.printables.com/model/681983-prusa-mini-corexy)
+    * License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+
+## License
+
+In accordance with the ShareAlike condition of the original project and to support the open-source community, this entire project (including the newly added parts I designed) is also released under the **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** license.

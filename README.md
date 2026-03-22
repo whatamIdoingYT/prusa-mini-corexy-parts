@@ -130,7 +130,7 @@ G92 E0.0
 M600
 ```
 
-** Pause G-Code:**
+**Pause G-Code:**
 
 ```gcode
 M601

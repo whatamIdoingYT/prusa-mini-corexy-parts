@@ -58,110 +58,11 @@ Feel free to ask questions. I will try to answer them - either here, or on Print
 
 ## My Personal Machine G-Code for OrcaSlicer
 
-> **Important Note:** This configuration is specifically tuned for a setup with a **Bondtech bowden extruder** and a **titanium heatbreak**. If you are running a stock setup, please make sure to adjust or remove the custom E-steps (`M92`) and PID tuning values (`M301`) in the Start G-Code!
+> **Important Note:** This configuration is specifically tuned for a setup with a **Bondtech bowden extruder** and a **titanium heatbreak**. If you are running a stock setup, please make sure to adjust or remove the custom E-steps (`M92`) and PID tuning values (`M301`) in the Start G-Code! I am also using a Bondtech 0.4 CHT Nozzle, so I am able to extrude a lot more filament withthe stock hotend - around twice as much as with a stock nozzle. Another thing to watch out for is the build plate position! My build plate has a space of 36mm to the left horizontal 3030 extrusion and 14mm to the right horizontal 3030 extrusion (measured from the edge of the original smooth build plate to the inner edge of the extrusions where the Y carriages are running above - horizontally measured).
 
-**Start G-Code:**
+You can download my OrcaSlicer configuration from the 'printer configuration' folder. I mainly use the printer for ESUN PETG HS and for that the configuration works just fine! The ESUN PLA+ configuration also worked fine as far as I remember. Haven't been printing it for a while. The Benchy configuration should be a pretty fast speed one which I can not recommend to run. The cooling can not keep up with the printing speed. Otherwise the results weren't even that bad :) Maybe with a different duct (maybe the one from the Printables comment section) will lead to better results - looking forward for testing it!
 
-```gcode
-M862.3 P "MINI" ; printer model check
-M862.5 P2 ; g-code level check
-M862.6 P"Input shaper" ; FW feature check
-M115 U6.2.2+8853
-G90 ; use absolute coordinates
-M83 ; extruder relative mode
-M104 S170 ; set extruder temp for bed leveling
-M140 S[first_layer_bed_temperature] ; set bed temp
-M109 R170 ; wait for bed leveling temp
-M190 S[first_layer_bed_temperature] ; wait for bed temp
-G28 ; home all without mesh bed level
-M569 S0 X Y Z; reset to spreadCycle on all axis
-G29 ; mesh bed leveling 
-M104 S[first_layer_temperature] ; set extruder temp
-G92 E0
-
-G1 X0 Y-2 Z3 F2400
-
-M109 S[first_layer_temperature] ; wait for extruder temp
-
-M92 E415 ; custom E-steps for Bondtech extruder
-M301 P13.54 I0.98 D46.58 ; custom PID for titanium heatbreak
-
-; intro line
-G1 X10 Z0.2 F1000
-G1 X70 E8 F900
-G1 X140 E10 F700
-G92 E0
-
-M572 W0.06 ; set smooth time
-```
-
-**End G-Code:**
-
-```gcode
-{if layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+2, max_print_height)} F720 ; Move print head up{endif}
-G1 X170 Y170 F4200 ; park print head
-{if layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+50, max_print_height)} F720 ; Move print head further up{endif}
-G4 ; wait
-M104 S0 ; turn off temperature
-M140 S0 ; turn off heatbed
-M107 ; turn off fan
-M84 ; disable motors
-; max_layer_z = [max_layer_z]
-```
-
-**G-Code before layer change:**
-
-```gcode
-;BEFORE_LAYER_CHANGE
-G92 E0.0
-```
-
-**G-Code after layer change:**
-
-```gcode
-;AFTER_LAYER_CHANGE
-;[layer_z]
-{if ! spiral_mode}M74 W[extruded_weight_total]{endif}
-```
-
-**Filament change G-Code:**
-
-```gcode
-M600
-```
-
-**Pause G-Code:**
-
-```gcode
-M601
-```
-
-## **Motion settings:**
-
-**Velocity limits:**
-
-Max velocity X:        300
-Max velocity Y:        300
-Max velocity Z:        12
-Max velocity E:        100
-
-**Acceleration limits:**
-
-Max acceleration X:    10000
-Max acceleration Y:    10000
-Max acceleration Z:    600
-Max acceleration E:    3000
-Max accel. extruding:  10000
-Max accel. retract:    30000
-Max accel. travel:     10000
-
-**Jerk limits:**
-
-Max jerk X:            10
-Max jerk Y:            10
-Max jerk Z:            1
-Max jerk E:            2,5
-
+Just download it, mess around with it and tweak it for your personal preferences! Maybe its just a good starting point for you, if you like :) Or just create your own configuration from scratch. Using the Bambu A1 Mini configuration to configurate the Prusa Mini CoreXY was the way to go for me!
 
 ## **Disclaimer and Limitation of Liability**
 

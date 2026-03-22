@@ -58,11 +58,22 @@ Feel free to ask questions. I will try to answer them - either here, or on Print
 
 ## My personal printer config for OrcaSlicer with profiles for ESUN PETG HS and PLA+
 
-> **Important Note:** This configuration is specifically tuned for a setup with a **Bondtech bowden extruder** and a **titanium heatbreak**. If you are running a stock setup, please make sure to adjust or remove the custom E-steps (`M92`) and PID tuning values (`M301`) in the Start G-Code! I am also using a Bondtech 0.4 CHT Nozzle, so I am able to extrude a lot more filament withthe stock hotend - around twice as much as with a stock nozzle. Another thing to watch out for is the build plate position! My build plate has a space of 36mm to the left horizontal 3030 extrusion and 14mm to the right horizontal 3030 extrusion (measured from the edge of the original smooth build plate to the inner edge of the extrusions where the Y carriages are running above - horizontally measured).
+**Important Note:** This configuration is specifically tuned for a setup with a **Bondtech bowden extruder** and a **titanium heatbreak**. If you are running a stock setup, please make sure to adjust or remove the custom E-steps (`M92`) and PID tuning values (`M301`) in the Start G-Code! I am also using a Bondtech 0.4 CHT Nozzle, so I am able to extrude a lot more filament withthe stock hotend - around twice as much as with a stock nozzle. Another thing to watch out for is the build plate position! My build plate has a space of 36mm to the left horizontal 3030 extrusion and 14mm to the right horizontal 3030 extrusion (measured from the edge of the original smooth build plate to the inner edge of the extrusions where the Y carriages are running above - horizontally measured). The flow values, as well as the pressure advance values may vary for your type of filament. I tested them for the 0.4 CHT nozzle from Bondtech and the specific filaments.
 
 You can download my OrcaSlicer configuration from the 'printer configuration' folder. I mainly use the printer for ESUN PETG HS and for that the configuration works just fine! The ESUN PLA+ configuration also worked fine as far as I remember. Haven't been printing it for a while. The Benchy configuration should be a pretty fast speed one which I can not recommend to run. The cooling can not keep up with the printing speed. Otherwise the results weren't even that bad :) Maybe with a different duct (maybe the one from the Printables comment section) will lead to better results - looking forward for testing it!
 
 Just download it, mess around with it and tweak it for your personal preferences! Maybe its just a good starting point for you, if you like :) Or just create your own configuration from scratch. Using the Bambu A1 Mini configuration to configurate the Prusa Mini CoreXY was the way to go for me!
+
+## Input Shaping
+
+I've set my input shaping values as the following for the Mini CoreXY, based on my testing,**but the Values may vary for you:**
+
+**Filter:**
+**MVZ** on **both axes**
+
+**Frequencies:**
+**37** on the **X - axis**
+**40** on the **Y - axis**
 
 ## **Disclaimer and Limitation of Liability**
 

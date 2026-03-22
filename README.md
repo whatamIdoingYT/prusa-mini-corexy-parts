@@ -56,7 +56,7 @@ All the other parts (screws, pulleys, motors, rods, fans...) are being reused fr
 
 Feel free to ask questions. I will try to answer them - either here, or on Printables. On Printables you will probably get more support, because it's the projects origin :)
 
-## My Personal Machine G-Code for OrcaSlicer
+## My personal printer config for OrcaSlicer with profiles for ESUN PETG HS and PLA+
 
 > **Important Note:** This configuration is specifically tuned for a setup with a **Bondtech bowden extruder** and a **titanium heatbreak**. If you are running a stock setup, please make sure to adjust or remove the custom E-steps (`M92`) and PID tuning values (`M301`) in the Start G-Code! I am also using a Bondtech 0.4 CHT Nozzle, so I am able to extrude a lot more filament withthe stock hotend - around twice as much as with a stock nozzle. Another thing to watch out for is the build plate position! My build plate has a space of 36mm to the left horizontal 3030 extrusion and 14mm to the right horizontal 3030 extrusion (measured from the edge of the original smooth build plate to the inner edge of the extrusions where the Y carriages are running above - horizontally measured).
 

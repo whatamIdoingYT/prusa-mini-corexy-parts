@@ -78,6 +78,16 @@ I've set my input shaping values as the following for the Mini CoreXY, based on 
 
 **40** on the **Y - axis**
 
+## StealthChop (aka make my printer scream for dear life)
+
+If you are not using my OrcaSlicer printer configuration and you want to print above certain speeds (probably around 75 mm/s upwards), your printer will eventually start to scream! To prevent it from doing that, turn off StealthChop on all axis with this command:
+
+```gcode
+M569 S0 X Y Z;
+```
+Disable directly AFTER the homing routine! It needs it for homing! Otherwise the toolhead may crash and will kill your belt by running into the Y carriage (don't ask me how I know...).
+StealthChop is  being used to make your printer more silent - which apparently doesn't seem to work for this modified version of the Prusa Mini. So turn it off and use SpreadCycle instead. It's not worse - it's actually performing better. It is more noisy though compared to StealthChop (under normal circumstances), but in this case it will make your printer not scream beyond speeds of around 75 mm/s... so take the little bit more noise :)
+
 ## **Disclaimer and Limitation of Liability**
 
 **Please read this disclaimer carefully before using, modifying, or building upon this open-source project.**
